@@ -3,8 +3,9 @@
 """Docstring for Joe Chan: assignment7.py."""
 
 
-import random
 import argparse
+import random
+random.seed(0)
 
 
 class Dice(object):
@@ -12,15 +13,16 @@ class Dice(object):
 
     def __init__(self):
         """Constructor for the dice() class."""
-        random.seed(0)
         self.result = 0
 
     def roll_dice(self):
+        """Assigns a random number to the dice() object."""
         self.result = random.randint(1, 6)
         print "You have rolled a: ", str(self.result)
         return self.result
 
     def reset(self):
+        """Assigns a zero to the result attribute of the dice() object."""
         self.result = 0
 
 
@@ -33,22 +35,28 @@ class Player(object):
         self.totalscore = 0
 
     def reset(self):
+        """Resets the totalscore attribute to zero."""
         self.totalscore = 0
 
     def get_id(self):
+        """Returns the id attribute."""
         return self.id
 
     def get_totalscore(self):
+        """Returns the totalscore attribute."""
         return self.totalscore
 
     def print_totalscore(self):
-        print "*Your Total Score is:", str(self.totalscore)
+        """Prints the totalscore attribute."""
+        print "*Your Score is:", str(self.totalscore)
         return
 
     def getTempTotal(self, tempscore):
+        """Calculates a temporary total score for the round."""
         return (self.totalscore + tempscore)
 
     def add_round_score(self, roundscore):
+        """Updates the totalscore with the roundscore."""
         self.totalscore = self.totalscore + roundscore
         return
 
@@ -114,7 +122,7 @@ class PIGSgame(object):
                     endturn = True
                 else:
                     round_score = round_score + score
-                    print "*Your current round score is:", str(round_score)
+                    print "*Your Current Round Score is:", str(round_score)
                     temp_total = gameplayer.getTempTotal(round_score)
                     if temp_total >= 100:
                         gameplayer.add_round_score(round_score)
